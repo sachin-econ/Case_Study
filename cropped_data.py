@@ -5,4 +5,4 @@ def raw_data():###data_download
     ###unzip
     !tar -xf imdb_crop.tar
     !tar -xf wiki_crop.tar###unzip
-raw_data()
+
