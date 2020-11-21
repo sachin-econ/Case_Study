@@ -49,7 +49,7 @@ def focal_loss(classes_num, gamma=2., alpha=.25, e=0.1):
     return focal_loss_fixed
     
     
-    def calculate_age(dob, photo_taken_year):
+def calculate_age(dob, photo_taken_year):
     days = dob % 1
     birth_date = datetime.date.fromordinal(
         dob) + datetime.timedelta(days=days) - datetime.timedelta(days=366)
