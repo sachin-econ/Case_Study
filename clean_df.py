@@ -64,16 +64,12 @@ def data_sources():
         else:
             df = pd.concat([initial_df, df])
 
-    df.info()
 
-    df.dtypes
 
     df = df.drop_duplicates()
     df = df.dropna()
     df = df.astype({'gender_id': 'int64'})
-    df.info()
 
-    df.describe()
 
     df.drop(df[df.age < 0].index, inplace=True)
     df.drop(df[df.age > 100].index, inplace=True)
