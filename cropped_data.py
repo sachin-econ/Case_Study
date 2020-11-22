@@ -6,8 +6,8 @@ try:
   except:
     print('Download Failed')
   try:
-    !tar - xf wiki_crop.tar
-    !tar - xf imdb_crop.tar
+    !tar -xf wiki_crop.tar
+    !tar -xf imdb_crop.tar
     print('Extarction Complete')
   except:
     print('Extarction Failed')
