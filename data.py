@@ -8,6 +8,21 @@ import logging
 logger = tf.get_logger()
 logger.setLevel(logging.ERROR)
 
+try:
+  try:
+    !wget https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/static/imdb_crop.tar
+    !wget https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/static/wiki_crop.tar
+  except:
+    print('Download Failed')
+  try:
+    !tar -xf wiki_crop.tar
+    !tar -xf imdb_crop.tar
+  except:
+    print('Extarction Failed')
+except:
+  print('Process Failed')
+
+
 df = pd.DataFrame()
 for source in data_sources:
     IMAGE_DIRECTORY = '{}_crop'.format(source)
