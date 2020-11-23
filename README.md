@@ -1,5 +1,5 @@
 # Case Study
-to be added
+Age Estimation using IMDB-WIKI.
 
 ## Data
 IMDB-WIKI is the largest publicly available dataset of face images with gender and age labels for training and testing. There are 460,723 face images from 20,284 celebrities from IMDb and 62,328 from Wikipedia, being thus 523,051 in total. Rothe et al. crawled the dataset for age prediction and tackled the estimation of apparent age with CNN using the VGG-16 architecture, which they made public in 2016.  
