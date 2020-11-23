@@ -24,7 +24,7 @@ We also remove duplicates and those records with ages below 0 or over 100. Key s
 ## Age Distrbution 
 ![alt text][Age]
 
-[Age]:https://github.com/sachin-econ/Case_Study/blob/main/download.png "Fig 1 Age Distrbution"  
+[Age]:https://github.com/sachin-econ/Case_Study/blob/main/resources/download.png "Fig 1 Age Distrbution"  
   
 **Size of the bucket “15 to 25 years old”:** 39369   
 **Percentage of this population is "30 year old males":** 1.87% 
@@ -37,7 +37,7 @@ In our method, we chose the Dense Convolutional Network (specifically DenseNet 1
 
 ![alt text][DenseNet 121]
 
-[DenseNet 121]:https://github.com/sachin-econ/Case_Study/blob/main/dense%20121.png "Fig 2 DenseNet 121"  
+[DenseNet 121]:https://github.com/sachin-econ/Case_Study/blob/main/resources/dense%20121.png "Fig 2 DenseNet 121"  
 
 An output of the previous layer acts as an input of the second layer by using composite function operation. This composite operation consists of the convolution layer, pooling layer, batch normalization, and non-linear activation layer.   
 DenseNets have several compelling advantages: they alleviate the vanishing gradient problem, strengthen feature propagation, encourage feature reuse, and substantially reduce the number of parameters. DenseNets obtain significant improvements over the state-of-the-art on most standard datasets, whilst requiring less computation to achieve high performance.  
@@ -57,7 +57,7 @@ Particularly important when dealing with highly imbalanced datasets because in s
 The Focal Loss is mathematically defined as:  
 ![alt text][Focal Loss]
 
-[Focal Loss]:https://github.com/sachin-econ/Case_Study/blob/main/Focal%20Loss%20Fn.PNG "Fig 3 Focal Loss Equation"  
+[Focal Loss]:https://github.com/sachin-econ/Case_Study/blob/main/resources/Focal%20Loss%20Fn.PNG "Fig 3 Focal Loss Equation"  
 
 There are two adjustable parameters for focal loss.  
 *  The focusing parameter γ(gamma) smoothly adjusts the rate at which easy examples are down-weighted. When γ = 0, focal loss is equivalent to categorical cross-entropy, and as γ is increased the effect of the modulating factor is likewise increased (γ = 2 works best in experiments).
