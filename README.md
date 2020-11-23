@@ -69,4 +69,7 @@ Implementation of Focal Loss code in [utility.py](https://github.com/sachin-econ
 No, Deep learning systems are “trained” to perform identification tasks by being presented with many examples of pictures, objects, or scenarios that humans have already labeled “correct” or “incorrect". These labeled examples or training data play a key role in determining the overall accuracy of these systems.  
 The training data in our model is unevenly distributed, with fewer records in the younger and older age groups. Thus our model is more likely to misclassify a person from these groups. Similarly, the dataset also lacks diversity among gender and ethnic groups and may lack the ability to predict age groups accurately in these less represented demographics.
 
- 
+#### Algorithm Flowchart
+![alt text][Flowchart]
+
+[Flowchart]:https://github.com/sachin-econ/Case_Study/blob/main/resources/Flow.png "Fig 3 Algorithm Flowchart"  
