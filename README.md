@@ -1,6 +1,14 @@
 # Case Study
 Age Estimation using IMDB-WIKI.
-
+### Content
+  1. [**Data**](https://github.com/sachin-econ/Case_Study#data)  
+  2. [**Age Distrbution**](https://github.com/sachin-econ/Case_Study#age-distrbution)  
+  3. [**Age Estimation Algorithm**](https://github.com/sachin-econ/Case_Study#age-estimation-algorithm)   
+      3a. [Algorithm Tradeoffs](https://github.com/sachin-econ/Case_Study#algorithm-tradeoffs)  
+      3b. [Loss functions](https://github.com/sachin-econ/Case_Study#loss-functions)  
+      3c. [Model Dependency](https://github.com/sachin-econ/Case_Study#model-dependency)  
+      3d. [Algorithm Flowchart](https://github.com/sachin-econ/Case_Study#algorithm-flowchart)  
+  
 ## Data
 IMDB-WIKI is the largest publicly available dataset of face images with gender and age labels for training and testing. There are 460,723 face images from 20,284 celebrities from IMDb and 62,328 from Wikipedia, being thus 523,051 in total. Rothe et al. crawled the dataset for age prediction and tackled the estimation of apparent age with CNN using the VGG-16 architecture, which they made public in 2016.  
 The complete data sets from the IMDB-WIKI project is large (272 GB). We use much smaller subsets of face-only data for our study. The image metadata stored in the MATLAB binary database was converted using SciPy and added to Pandas DataFrame after applying the below conditions.  
@@ -32,7 +40,7 @@ We also remove duplicates and those records with ages below 0 or over 100. Key s
 ## Age Estimation Algorithm
 Age estimation has become more relevant in recent years with applications across fields for intelligent ad delivery, bioassays science, biostatistics, electronic customer relationship management, recognition, law enforcement, security controls, demographic census, human-computer interaction, and other fields.  
 A traditional algorithm typically performs a set of mathematical operations on the raw pixel values of the image called feature extraction. These features are combined to make a final decision about the image using a combination of manually tuned parameters or thresholds. In comparison, deep learning offers dramatic performance improvements by learning from examples specific to the classification problem at hand, and with both feature extraction and decision are learned systems do not require endless tuning to adapt to changing conditions.   
-In practice, the use of the multi-scale deep convolutional neural network has grown due to its impressive performance in end-to-end age regressor. For the IMDB- WIKI dataset, the first and second-edition winners (Rothe et al and Antipov et al ) and the ChaLearn LAP competition on Apparent Age Estimation use VGG-16 as base architecture.  
+In practice, the use of the multi-scale deep convolutional neural network has grown due to its impressive performance in end-to-end age regressor. For the IMDB- WIKI dataset, the first and second-edition winners (Rothe et al and Antipov et al) and the ChaLearn LAP competition on Apparent Age Estimation use VGG-16 as base architecture.  
 In our method, we chose the Dense Convolutional Network (specifically DenseNet 121), which connects each layer to every other layer in a feed-forward fashion. Whereas traditional convolutional networks with L layers have L connections - one between each layer and its subsequent layer - DenseNet network has L(L+1)/2 direct connections.   
 
 ![alt text][DenseNet 121]
