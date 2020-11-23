@@ -24,7 +24,10 @@ We also remove duplicates and those records with ages below 0 or over 100. Key s
 ## Age Distrbution: 
 ![alt text][logo]
 
-[logo]:https://github.com/sachin-econ/Case_Study/blob/main/download.png "Fig 1"
+[logo]:https://github.com/sachin-econ/Case_Study/blob/main/download.png "Fig 1"  
+  
+**Size of the bucket “15 to 25 years old”:** 39369   
+**Percentage of this population is "30 year old males":** 1.87% 
 
 
 
