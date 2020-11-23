@@ -8,6 +8,7 @@ import logging
 logger = tf.get_logger()
 logger.setLevel(logging.ERROR)
 
+data_sources = ['wiki', 'imdb']
 df = pd.DataFrame()
 for source in data_sources:
     IMAGE_DIRECTORY = '{}_crop'.format(source)
