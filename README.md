@@ -63,7 +63,7 @@ There are two adjustable parameters for focal loss.
 *  The focusing parameter γ(gamma) smoothly adjusts the rate at which easy examples are down-weighted. When γ = 0, focal loss is equivalent to categorical cross-entropy, and as γ is increased the effect of the modulating factor is likewise increased (γ = 2 works best in experiments).
 *  α(alpha): balances focal loss, yields slightly improved accuracy over the non-α-balanced form.
 
-Implementation of Focal Loss in code in [utility.py](https://github.com/sachin-econ/Case_Study/blob/main/utility.py).
+Implementation of Focal Loss code in [utility.py](https://github.com/sachin-econ/Case_Study/blob/main/utility.py).
 
 #### Model Dependency
 No, Deep learning systems are “trained” to perform identification tasks by being presented with many examples of pictures, objects, or scenarios that humans have already labeled “correct” or “incorrect". These labeled examples or training data play a key role in determining the overall accuracy of these systems.  
