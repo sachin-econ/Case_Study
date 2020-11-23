@@ -18,7 +18,7 @@ def obtain_data(source1, source2):
     try:
         for source in data_sources:
             print('Extracting {}...'.format(source))
-            with tarfile.open('{}_corp.tar'.format(source), 'r') as f:
+            with tarfile.open('{}_crop.tar'.format(source), 'r') as f:
                 f.extractall()
             print('Complete')
     except tarfile.DoesNotExist:
