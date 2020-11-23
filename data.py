@@ -8,78 +8,66 @@ import logging
 logger = tf.get_logger()
 logger.setLevel(logging.ERROR)
 
-try:
-  try:
-    !wget https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/static/imdb_crop.tar
-    !wget https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/static/wiki_crop.tar
-  except:
-    print('Download Failed')
-  try:
-    !tar -xf wiki_crop.tar
-    !tar -xf imdb_crop.tar
-  except:
-    print('Extarction Failed')
-except:
-  print('Process Failed')
 
-data_sources = ['wiki', 'imdb']
-df = pd.DataFrame()
-for source in data_sources:
-    IMAGE_DIRECTORY = '{}_crop'.format(source)
-    MATDB_FILE = os.path.join(IMAGE_DIRECTORY, '{}.mat'.format(source))
+def clean_data(source1, source2):
+    data_sources = [source1, source2]
+    df = pd.DataFrame()
+    for source in data_sources:
+        IMAGE_DIRECTORY = '{}_crop'.format(source)
+        MATDB_FILE = os.path.join(IMAGE_DIRECTORY, '{}.mat'.format(source))
 
-    matdb = scipy.io.loadmat(MATDB_FILE)['{}'.format(source)][0, 0]
-    print('MATLAB database rows: {}'.format(
-        str(len(matdb["face_score"][0]))))
+        matdb = scipy.io.loadmat(MATDB_FILE)['{}'.format(source)][0, 0]
+        print('MATLAB database rows: {}'.format(
+            str(len(matdb["face_score"][0]))))
 
-    rows = []
-    MINIMUM_FACE_SCORE = 1.0
+        rows = []
+        MINIMUM_FACE_SCORE = 1.0
 
-    print(source)
+        print(source)
 
-    for i in range(len(matdb["face_score"][0])):
-        dob = int(matdb["dob"][0][i])
-        face_score = matdb["face_score"][0][i]
-        second_face_score = matdb["second_face_score"][0][i]
+        for i in range(len(matdb["face_score"][0])):
+            dob = int(matdb["dob"][0][i])
+            face_score = matdb["face_score"][0][i]
+            second_face_score = matdb["second_face_score"][0][i]
 
-        if dob <= 366:
-            continue
+            if dob <= 366:
+                continue
 
-        if face_score < MINIMUM_FACE_SCORE or np.isinf(face_score):
-            continue
+            if face_score < MINIMUM_FACE_SCORE or np.isinf(face_score):
+                continue
 
-        if (~np.isnan(second_face_score)) and second_face_score > 0.0:
-            continue
+            if (~np.isnan(second_face_score)) and second_face_score > 0.0:
+                continue
 
-        file_path = os.path.join(
-            IMAGE_DIRECTORY, matdb["full_path"][0][i][0])
-        age = fns.calculate_age(dob, int(matdb["photo_taken"][0][i]))
-        gender_id = matdb["gender"][0][i]
-        # print(source)
-        if os.path.isfile(file_path):
-            gender = fns.get_gender(gender_id)
-            age_group_id = fns.get_age_group_id(age)
-            age_group_label = str(age_group_id)
-            age_group = fns.get_age_group(age_group_id)
-            rows.append({'file_path': file_path, 'gender_id': gender_id, 'gender': gender,
-                         'age': age, 'age_group_id': age_group_id, 'age_group_label': age_group_label,
-                         'age_group': age_group})
+            file_path = os.path.join(
+                IMAGE_DIRECTORY, matdb["full_path"][0][i][0])
+            age = fns.calculate_age(dob, int(matdb["photo_taken"][0][i]))
+            gender_id = matdb["gender"][0][i]
+            # print(source)
+            if os.path.isfile(file_path):
+                gender = fns.get_gender(gender_id)
+                age_group_id = fns.get_age_group_id(age)
+                age_group_label = str(age_group_id)
+                age_group = fns.get_age_group(age_group_id)
+                rows.append({'file_path': file_path, 'gender_id': gender_id, 'gender': gender,
+                             'age': age, 'age_group_id': age_group_id, 'age_group_label': age_group_label,
+                             'age_group': age_group})
+            else:
+                print(
+                    'Image file does not exist! Skipping record for image: {}'.format(file_path))
+
+        initial_df = pd.DataFrame(rows, columns=['file_path', 'gender_id', 'gender', 'age',
+                                                 'age_group_id', 'age_group_label', 'age_group'])
+
+        if df.empty:
+            df = initial_df
         else:
-            print(
-                'Image file does not exist! Skipping record for image: {}'.format(file_path))
+            df = pd.concat([initial_df, df])
 
-    initial_df = pd.DataFrame(rows, columns=['file_path', 'gender_id', 'gender', 'age',
-                                             'age_group_id', 'age_group_label', 'age_group'])
+    df = df.drop_duplicates()
+    df = df.dropna()
+    df = df.astype({'gender_id': 'int64'})
 
-    if df.empty:
-        df = initial_df
-    else:
-        df = pd.concat([initial_df, df])
-
-df = df.drop_duplicates()
-df = df.dropna()
-df = df.astype({'gender_id': 'int64'})
-
-df.drop(df[df.age < 0].index, inplace=True)
-df.drop(df[df.age > 100].index, inplace=True)
-df.describe()
+    df.drop(df[df.age < 0].index, inplace=True)
+    df.drop(df[df.age > 100].index, inplace=True)
+    df.describe()
