@@ -21,6 +21,10 @@ We also remove duplicates and those records with ages below 0 or over 100. Key s
 |max	   |1	     |100	   |         9|
 
 
+## Age Distrbution: 
+![alt text][logo]
+
+[logo]:https://github.com/sachin-econ/Case_Study/blob/main/download.png "Fig 1"
 
 
 
