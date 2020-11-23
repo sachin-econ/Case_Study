@@ -1,15 +1,25 @@
-try:
-  try:
-    !wget https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/static/imdb_crop.tar
-    !wget https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/static/wiki_crop.tar
-    print('Download Complete')
-  except:
-    print('Download Failed')
-  try:
-    !tar -xf wiki_crop.tar
-    !tar -xf imdb_crop.tar
-    print('Extarction Complete')
-  except:
-    print('Extarction Failed')
-except:
-  print('Process Failed')
+import tarfile
+import functions as fns
+
+def obtain_data(source1, source2):
+
+    data_sources = [source1, source2]
+    try:
+        for source in data_sources:
+            url = 'https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/static/{}_crop.tar'.format(
+                  source)
+            filename = '{}_crop.tar'.format(source)
+            print('Downloading {}...'.format(source))
+            fns.download(url, filename)
+            print('Complete')
+    except url.DoesNotExist:
+        print('Data Download Failed')
+
+    try:
+        for source in data_sources:
+            print('Extracting {}...'.format(source))
+            with tarfile.open('{}_corp.tar'.format(source), 'r') as f:
+                f.extractall()
+            print('Complete')
+    except tarfile.DoesNotExist:
+        print('Data Extraction Failed')
