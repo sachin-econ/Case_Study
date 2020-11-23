@@ -9,5 +9,19 @@ __second_face__ - Also skip records with second_face_score value(not equal to Na
 Please refer to [function.py](https://github.com/sachin-econ/Case_Study/blob/main/functions.py) for age, gender, and age bucket calculation/definitions.  
 We also remove duplicates and those records with ages below 0 or over 100. Key statics below:  
 
+| Tables | Gender|  Age  | Age Group|
+| ------ |------:|------:|---------:|
+| count  |209946 |209946 |    209946|
+| mean   |0.58   |36.69  |      3.71|
+| std	   |0.49	 |13.73	 |      2.16|
+|min	   |0	     |0	     |         0|
+|25%     |0	     |27     |       	2|
+|50%     |1	     |35	   |         4|
+|75%	   |1	     |44     |         5|
+|max	   |1	     |100	   |         9|
+
+
+
+
 
 
