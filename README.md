@@ -44,5 +44,18 @@ DenseNets have several compelling advantages: they alleviate the vanishing gradi
 Additionally, we approach age estimation as a classification (bucketing ages) problem rather than regression, which helps us navigate data issues and computational limitations.
 This classification approach helps us to control the effects of the skewness of the dataset towards the middle ages, and the distinction between apparent and real age addressed in many recent papers. Moreover, in real-world scenarios, a classification strategy is better for targeting both businesses and policymakers.  
 
+## Algorithm Tradeoffs
+Even with selective classification, data imbalance at the lower and higher end of the data still affects the quality of prediction. In other models trained using the same dataset, researchers have used approaches like a) equalizing the age distribution; i.e., randomly ignoring some of the images of the most frequent ages and b)manually collected a private dataset of 5723 children images in the 0-12 age category and training them separately.   
+Additionally, use of the compiler cropped dataset face and quality parameter lead to loss of around 40K images, used in other architectures trained using raw data from the same source.  
+DenseNet uses a lot more memory when compared to earlier architecture (like ResNet), as the tensors from different layers are concatenated together. Even though DenseNets are advanced models they still suffer some of the limitations of deep learning. 
 
+## Loss functions
+The focal loss was implemented in the Focal Loss for Dense Object Detection paper by He et al. Focal loss is a dynamically scaled cross-entropy loss, where the scaling factor automatically decays to 0 as the confidence in the correct class increases.  
+Models trained using Binary Cross-Entropy loss requires the model to be confident about what is predicting. Whereas, what Focal Loss does is that it makes it easier for the model by giving the model a bit more freedom to take some risk when making predictions.   
+Particularly important when dealing with highly imbalanced datasets because in some cases, we need to model to take a risk and predict something even if the prediction turns out to be a False Positive (like minors in a bar). Therefore, Focal Loss is particularly useful in cases where there is a class imbalance like IMDB Wiki Dataset.  
 
+The Focal Loss is mathematically defined as:  
+![alt text][Focal Loss]
+
+[Focal Loss]:https://github.com/sachin-econ/Case_Study/blob/main/Focal%20Loss%20Fn.PNG "Fig 3 Focal Loss Equation"  
+ 
