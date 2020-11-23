@@ -21,5 +21,5 @@ def obtain_data(source1, source2):
             with tarfile.open('{}_crop.tar'.format(source), 'r') as f:
                 f.extractall()
             print('Complete')
-    except tarfile.DoesNotExist:
+    except extract_file.DoesNotExist:
         print('Data Extraction Failed')
