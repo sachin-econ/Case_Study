@@ -28,7 +28,7 @@ for source in data_sources:
         str(len(matdb["face_score"][0]))))
 
     rows = []
-    MINIMUM_FACE_SCORE = 0.0
+    MINIMUM_FACE_SCORE = 1.0
 
     print(source)
 
