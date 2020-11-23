@@ -39,5 +39,10 @@ In our method, we chose the Dense Convolutional Network (specifically DenseNet 1
 
 [DenseNet 121]:https://github.com/sachin-econ/Case_Study/blob/main/dense%20121.png "Fig 2 DenseNet 121"  
 
+An output of the previous layer acts as an input of the second layer by using composite function operation. This composite operation consists of the convolution layer, pooling layer, batch normalization, and non-linear activation layer.   
+DenseNets have several compelling advantages: they alleviate the vanishing gradient problem, strengthen feature propagation, encourage feature reuse, and substantially reduce the number of parameters. DenseNets obtain significant improvements over the state-of-the-art on most standard datasets, whilst requiring less computation to achieve high performance.  
+Additionally, we approach age estimation as a classification (bucketing ages) problem rather than regression, which helps us navigate data issues and computational limitations.
+This classification approach helps us to control the effects of the skewness of the dataset towards the middle ages, and the distinction between apparent and real age addressed in many recent papers. Moreover, in real-world scenarios, a classification strategy is better for targeting both businesses and policymakers.  
+
 
 
