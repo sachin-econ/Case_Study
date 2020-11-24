@@ -106,6 +106,5 @@ Huang, Gao, et al. "Densely connected convolutional networks." Proceedings of th
 **Cleaning**: [Base](https://github.com/christophersmith/missiondata-labs/blob/master/using-machine-learning-to-predict-person-demographics-from-images/Using%20Machine%20Learning%20to%20Predict%20Person%20Demographics%20from%20Images%20-%20Step%201%20Gender.ipynb)
 
 ## Conclusion
-In this work, we have presented our alternative model. The starting point of our approach is the training pipeline from IMDB-WIKI using a DenseNet with pretrained ImageNet weights and using this CNN for age-group estimation. However, we have not managed to improve on the previous results(for models based on IMDB-WIKI) by using a DenseNet model owing to an imbalance in data. Future works can fine-tuned by using balancing techniques used in earlier works, employing more advanced models like EfficentNet and obtaining apparent age estimation.
-
+In this work, we have presented our alternative model. The starting point of our approach is the training IMDB-WIKI using DenseNet121 architecture with pre-trained ImageNet weights, followed by further training and fine-tuning it for age-group estimation. However, we have not managed to improve on the previous results(for models based on IMDB-WIKI) by using a DenseNet model owing to an imbalance in data. We can avail better results in the future by handling data imbalance by following solutions experimented with in earlier works, employing more advanced models like EfficentNet, and obtaining apparent age estimation.
 
