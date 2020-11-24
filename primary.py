@@ -287,7 +287,7 @@ plt.show()
 #Model V2
 def unfreeze_model(model):
     #unfreeze the top 17 layers while leaving BatchNorm layers frozen
-    for layer in model.layers[-17:]:
+    for layer in model.layers[-24:]:
         if not isinstance(layer, layers.BatchNormalization):
             layer.trainable = True
 
