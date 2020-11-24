@@ -13,6 +13,7 @@ import pandas as pd
 import numpy as np
 import os
 import keras
+import sklearn
 import random
 import cv2
 import math
@@ -110,6 +111,8 @@ df = df.astype({'gender_id': 'int64'})
 
 df.drop(df[df.age < 0].index, inplace=True)
 df.drop(df[df.age > 100].index, inplace=True)
+
+## Cleaned data Summary
 df.describe()
 
 ##Age Distribution Chart
@@ -133,7 +136,6 @@ male30 = ((sum(map(lambda i: i == 'Male', age30['gender']))/df['age'].count())*1
 print('Percentage of this population is "30 year old males”:') 
 print(male30)
 
-import sklearn
 #Train--Test Split
 train_df = None
 validation_df = None
@@ -166,12 +168,14 @@ print(validation_df['age'].count())
 print('Test Count')
 print(test_df['age'].count())
 
+# Value Def
 IMAGE_HEIGHT_PIXELS = 224
 IMAGE_WIDTH_PIXELS = 224
 IMAGE_COLOR_CHANNELS = 3
 NUM_CLASSES = 10
 BATCH_SIZE = 128
 
+#Preprocessing
 train_datagen = tf.keras.preprocessing.image.ImageDataGenerator(
         rescale=1./255,
         shear_range=0.2,                                                                                                                                                                            
@@ -198,11 +202,14 @@ validation_generator = valid_datagen.flow_from_dataframe(
         batch_size=BATCH_SIZE,
         class_mode='categorical')
 
+#Calculation for Focal Loss Fun
 print(train_df.groupby(["age"]).agg(["count"]))
 age_dist = [train_df["age"][(train_df.age >= x -10) & (train_df.age <= x)].count() for x in range(10, 101, 10)]
 age_dist = [age_dist[0]] + age_dist + [age_dist[-1]]
 print(age_dist)
 
+
+#Image Augmentation Layer def
 img_augmentation = Sequential(
     [
         preprocessing.RandomRotation(factor=0.15),
@@ -213,6 +220,8 @@ img_augmentation = Sequential(
     name="img_augmentation",
 )
 
+
+#Model V1 
 def build_model(num_classes):
     inputs = layers.Input(shape=(IMAGE_HEIGHT_PIXELS, IMAGE_WIDTH_PIXELS, IMAGE_COLOR_CHANNELS))
     x = img_augmentation(inputs)
@@ -252,6 +261,7 @@ history = model.fit_generator(train_generator,
                callbacks=[adjust, check],
                validation_data=validation_generator)
 
+#Graph Val vs Train
 acc = history.history['accuracy']
 val_acc = history.history['val_accuracy']
 
@@ -274,8 +284,9 @@ plt.legend(loc='upper right')
 plt.title('Training and Validation Loss')
 plt.show()
 
+#Model V2
 def unfreeze_model(model):
-    #unfreeze the top 21 layers while leaving BatchNorm layers frozen
+    #unfreeze the top 17 layers while leaving BatchNorm layers frozen
     for layer in model.layers[-17:]:
         if not isinstance(layer, layers.BatchNormalization):
             layer.trainable = True
@@ -292,6 +303,7 @@ check = ModelCheckpoint('age_modelv2.h5', verbose=2, save_best_only=True)
 EPOCHS = 10  
 history = model.fit(train_generator, epochs=epochs, validation_data=validation_generator, callbacks=[check], verbose=1)
 
+#Graph Val vs Train
 acc = history.history['accuracy']
 val_acc = history.history['val_accuracy']
 
@@ -314,7 +326,7 @@ plt.legend(loc='upper right')
 plt.title('Training and Validation Loss')
 plt.show()
 
-
+#Test
 age_predictions = []
 age_results = []
 
