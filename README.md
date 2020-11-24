@@ -83,7 +83,7 @@ The training data in our model is unevenly distributed, with fewer records in th
 #### Algorithm Flowchart
 ![alt text][Flowchart]
 
-[Flowchart]:https://github.com/sachin-econ/Case_Study/blob/main/resources/Flowchart.jpg "Fig 3 Algorithm Flowchart"  
+[Flowchart]:https://github.com/sachin-econ/Case_Study/blob/main/resources/Flow.jpg "Fig 3 Algorithm Flowchart"  
 
 ## References
 
