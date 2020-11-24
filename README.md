@@ -105,6 +105,7 @@ Huang, Gao, et al. "Densely connected convolutional networks." Proceedings of th
 **Focal Loss**: [Source](https://github.com/maozezhong/focal_loss_multi_class) & [Implementation](https://github.com/StevenBanama/C3AE/tree/9cfd0cb79d38887d8a30aa09279ceb92ee38cf04)  
 **Cleaning**: [Base](https://github.com/christophersmith/missiondata-labs/blob/master/using-machine-learning-to-predict-person-demographics-from-images/Using%20Machine%20Learning%20to%20Predict%20Person%20Demographics%20from%20Images%20-%20Step%201%20Gender.ipynb)
 
-
+## Conclusion
+In this work, we have presented our alternative model. The starting point of our approach is the training pipeline from IMDB-WIKI using a DenseNet with pretrained ImageNet weights and using this CNN for age-group estimation. However, we have not managed to improve on the previous results(for models based on IMDB-WIKI) by using a DenseNet model owing to an imbalance in data. Future works can fine-tuned by using balancing techniques used in earlier works, employing more advanced models like EfficentNet and obtaining apparent age estimation.
 
 
