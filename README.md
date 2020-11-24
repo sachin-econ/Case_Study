@@ -8,6 +8,9 @@ Age Estimation using IMDB-WIKI.
       3b. [Loss functions](https://github.com/sachin-econ/Case_Study#loss-functions)  
       3c. [Model Dependency](https://github.com/sachin-econ/Case_Study#model-dependency)  
       3d. [Algorithm Flowchart](https://github.com/sachin-econ/Case_Study#algorithm-flowchart)  
+  4. [**References**]()
+      4a. [Papers]()
+      4b. [Code] ()
   
 ## Data
 IMDB-WIKI is the largest publicly available dataset of face images with gender and age labels for training and testing. There are 460,723 face images from 20,284 celebrities from IMDb and 62,328 from Wikipedia, being thus 523,051 in total. Rothe et al. crawled the dataset for age prediction and tackled the estimation of apparent age with CNN using the VGG-16 architecture, which they made public in 2016.  
@@ -81,3 +84,27 @@ The training data in our model is unevenly distributed, with fewer records in th
 ![alt text][Flowchart]
 
 [Flowchart]:https://github.com/sachin-econ/Case_Study/blob/main/resources/Flow.png "Fig 3 Algorithm Flowchart"  
+
+## References
+
+#### Papers
+Rothe, Rasmus, Radu Timofte, and Luc Van Gool. "Dex: Deep expectation of apparent age from a single image." Proceedings of the IEEE international conference on computer vision workshops. 2015.  
+
+Antipov, Grigory, et al. "Apparent age estimation from face images combining general and children-specialized deep learning models." Proceedings of the IEEE conference on computer vision and pattern recognition workshops. 2016. 
+
+Qawaqneh, Zakariya, Arafat Abu Mallouh, and Buket D. Barkana. "Deep convolutional neural network for age estimation based on VGG-face model." arXiv preprint arXiv:1709.01664 (2017).  
+
+Lin, Tsung-Yi, et al. "Focal loss for dense object detection." Proceedings of the IEEE international conference on computer vision. 2017  
+
+Zhang, Zhiqin. "Apparent age estimation with CNN." 2016 4th International Conference on Machinery, Materials and Information Technology Applications. Atlantis Press, 2017.  
+
+Huang, Gao, et al. "Densely connected convolutional networks." Proceedings of the IEEE conference on computer vision and pattern recognition. 2017.  
+
+
+#### Code
+**Focal Loss**: [Source](https://github.com/maozezhong/focal_loss_multi_class) & [Implementation](https://github.com/StevenBanama/C3AE/tree/9cfd0cb79d38887d8a30aa09279ceb92ee38cf04)  
+**Cleaning**: [Base](https://github.com/christophersmith/missiondata-labs/blob/master/using-machine-learning-to-predict-person-demographics-from-images/Using%20Machine%20Learning%20to%20Predict%20Person%20Demographics%20from%20Images%20-%20Step%201%20Gender.ipynb)
+
+
+
+
