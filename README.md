@@ -8,10 +8,11 @@ Age Estimation using IMDB-WIKI.
       3b. [Loss functions](https://github.com/sachin-econ/Case_Study#loss-functions)  
       3c. [Model Dependency](https://github.com/sachin-econ/Case_Study#model-dependency)  
       3d. [Algorithm Flowchart](https://github.com/sachin-econ/Case_Study#algorithm-flowchart)  
-  4. [**References**](https://github.com/sachin-econ/Case_Study#references)  
+  4. [**Conclusion**](https://github.com/sachin-econ/Case_Study/blob/main/README.md#conclusion)   
+  5. [**References**](https://github.com/sachin-econ/Case_Study#references)  
       4a. [Papers](https://github.com/sachin-econ/Case_Study#papers)  
       4b. [Code](https://github.com/sachin-econ/Case_Study#code)  
-  5. [**Conclusion**](https://github.com/sachin-econ/Case_Study/blob/main/README.md#conclusion)  
+  
   
 ## Data
 IMDB-WIKI is the largest publicly available dataset of face images with gender and age labels for training and testing. There are 460,723 face images from 20,284 celebrities from IMDb and 62,328 from Wikipedia, being thus 523,051 in total. Rothe et al. crawled the dataset for age prediction and tackled the estimation of apparent age with CNN using the VGG-16 architecture, which they made public in 2016.  
